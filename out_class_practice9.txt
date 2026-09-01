@@ -1,0 +1,22 @@
+git init
+    cat > recipe.txt << EOF
+    an apple
+    banana
+    watermelon
+    EOF
+    git add recipe.txt
+    git commit -m "add recipe.txt"
+    git branch salty
+    git brach sweet
+    git checkout salty
+    echo "salt" >> recipe.txt
+    git add recipe.txt
+    git commit -m "update recipe.txt"
+    git checkout sweet
+    echo "sweet" >> recipe.txt
+    git add recipe.txt
+    git commit -m "update recipe.txt"
+    git checkout master
+    git merge salty
+    git merge sweet
+    cat recipe.txt
