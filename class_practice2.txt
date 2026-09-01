@@ -1,0 +1,28 @@
+mkdir q02
+cd q02
+cat > access.csv <<'EOF'
+timestamp,user,path,status,latency_ms
+09:00:01,alice,/api/users,200,120
+09:00:02,bob,/api/orders,500,310
+09:00:03,alice,/api/users,503,180
+09:00:04,carol,/login,500,90
+09:00:05,bob,/api/orders,502,260
+09:00:06,dave,/health,200,20
+09:00:07,alice,/api/orders,500,420
+09:00:08,carol,/api/users,500,150
+EOF
+cat > analyze.sh <<'EOF'
+#!/usr/bin/env bash
+CSV="$1"
+if [ ! -f "$CSV" ];then
+    echo "error: file $CSV not found" >&2
+    exit 1
+fi
+tail -n +2 "$CSV" | awk -F',' '$4>=500 && $4<600 {cnt[$3]++} END{for(p in cnt) print cnt[p],p}' \
+| sort -k1,1nr -k2,2 | head -n2
+tail -n +2 "$CSV" | awk -F',' '{sum+=$5;n++} END{printf("avg latency: %.2f\n", sum/n)}'
+EOF
+chmod +x analyze.sh
+./analyze.sh access.csv
+./analyze.sh nofile.csv
+
