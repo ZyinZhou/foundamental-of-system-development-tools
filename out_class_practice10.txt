@@ -1,0 +1,1 @@
+find ~ -type f | sed -E 's/.*\.([^.]+)$/\1/' | sort | uniq -c | sort -nr | head -n5
