@@ -1,0 +1,4 @@
+git clone https://github.com/missing-semester/missing-semester.git
+    git log -all -graph --decorate
+    git blame README.md
+    git show a2b53b74
