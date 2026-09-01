@@ -1,0 +1,15 @@
+mkdir git‑demo
+cd git‑demo
+git init
+echo "normal content" > small.txt
+dd if=/dev/urandom of=big.bin bs=1M count=5
+git add small.txt
+git commit -m "add small.txt"
+git add big.bin
+git commit -m "accidentally commit big binary file"
+echo "update something" >> small.txt
+git add small.txt
+git commit -m "update small.txt"
+git log --all -- big.bin
+git filter-repo --path big.bin --invert-paths --force
+git log --all -- big.bin
