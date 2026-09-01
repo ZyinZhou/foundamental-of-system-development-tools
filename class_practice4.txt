@@ -1,0 +1,31 @@
+mkdir q04
+cd q04
+cat > report.tex <<'EOF'
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\title{Tool Report}
+\author{Zyin-24070001148}
+\maketitle
+
+\section{Result}
+Sample equation:
+\begin{equation}\label{eq:square}
+f(x)=x^2+2x+1
+\end{equation}
+Equation~\eqref{eq:square} is a quadratic polynomial.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+A & B \\
+10 & 20
+\end{tabular}
+\caption{Test data table}
+\label{tab:demo}
+\end{table}
+Table~\ref{tab:demo} is a 2‑by‑2 sample table.
+
+\end{document}
+EOF
+latexmk -pdf -halt-on-error report.tex
