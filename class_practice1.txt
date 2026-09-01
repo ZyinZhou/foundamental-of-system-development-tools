@@ -1,0 +1,13 @@
+mkdir -p input/docs
+mkdir -p imput/tmp
+touch "input/docs/notes one.txt"
+touch input/docs/.secret.txt
+printf "alpha\nbeta" > "input/docs/notes one.txt"
+printf "hidden" > input/docs/.secret.txt
+awd
+ls -l -a
+mkdir -p work/24070001148
+find "work/24070001148" -type d -exec chmod 750 {} \;
+find "work/24070001148" -type f -exec chmod 640 {} \;
+find "work/24070001148" -type f -printf "%P %s\n" >> inventory.txt
+
