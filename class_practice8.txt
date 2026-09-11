@@ -1,0 +1,17 @@
+ touch generate_words.py wordfreq.py
+    vim generate_words.py
+    import random
+    random.seed(20260831)
+    vocab = [f"w{i}" for i in range(1000)]
+    with open("words.txt", "w", encoding="utf-8") as f:
+        f.write(" ".join(random.choice(vocab) for _ in range(30000)))
+    vim wordfreq.py
+    words = open("words.txt", encoding="utf-8").read().split()
+    unique = []
+    for word in words:
+        if word not in unique:
+            unique.append(word)
+    print("count=", len(unique))
+    python3 generate_words.py
+    time python3 wordfreq.py
+    python3 -m cProfile -s cumulative wordfreq.py
