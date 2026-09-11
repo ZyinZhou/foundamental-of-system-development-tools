@@ -1,0 +1,16 @@
+cat > worker.sh << 'EOF'
+#!/usr/bin/env bash
+trap 'echo CLEAN_EXIT >> cleanup.log; exit 0' TERM INT
+n=0
+while true; do
+echo "$n"
+n=$((n+1))
+sleep 1
+done
+EOF
+chmod +x worker.sh
+./worker.sh >> stdout.log 2>> stderr.log
+bg
+jobs
+kill $(jobs -p)
+cat cleanup.log
