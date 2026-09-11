@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+count=0
+while true; do
+    count=$((count + 1))
+    ./target.sh > out.txt 2> err.txt
+    ret=$?
+    if [[ $ret -ne 0 ]]; then
+        echo "Failed after $count runs!"
+        echo -e "\n===== Standard Output ====="
+        cat out.txt
+        echo -e "\n===== Standard Error ====="
+        cat err.txt
+        break
+    fi
+done
