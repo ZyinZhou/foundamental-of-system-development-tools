@@ -1,0 +1,12 @@
+ touch corrution.c
+    vim corruption.c
+    gcc -g corruption.c -o corruption
+    ./corruption
+gdb ./corruption
+    watch students[1].id
+    run
+    c
+    p i
+    p student_idx
+    p &students[0].scores[3]
+    p &students[1].id
