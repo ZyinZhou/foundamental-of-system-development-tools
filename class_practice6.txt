@@ -1,0 +1,16 @@
+ touch math_utils.py
+    vim math_utils.py
+    def total_price(price: float, count: int)-> float:
+        return price * count
+    touch app.py
+    vim app.py
+    from math_utils import total_price
+    print(total_price(12.5, 4))
+    touch test_math_utils.py
+    vim test_math_utils.py
+    from math_utils import total_price
+    def test_total_price():
+        assert total_price(12.5, 4) == 50.0`
+ ruff check --fix
+    ruff check
+    pytest
