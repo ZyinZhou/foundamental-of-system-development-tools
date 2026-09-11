@@ -1,0 +1,12 @@
+ touch test_merge_sort.py
+    vim test_merge_sort.py
+    from merge_sort import merge_sort
+
+    def test_sample_input1():
+        input_arr = [3, 1, 4, 1, 5, 9, 2, 6]
+        expect = [1, 1, 2, 3, 4, 5, 6, 9]
+        assert merge_sort(input_arr) == expect
+
+
+    def test_single_element():
+        assert merge_sort([99]) == [99]
