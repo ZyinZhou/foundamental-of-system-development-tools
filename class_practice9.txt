@@ -1,0 +1,13 @@
+ mkdir -p src/greetlab
+    cd src/greetlab
+    touch __init__.py cli.py
+    vim __init__.py cli.py
+    cd ~/summer/w3/q09
+    touch pyproject.toml
+    vim pyproject.toml `\\ \textcolor{gray}{\#创建制定文件夹及文件}`
+    python3 -m build `\\ \textcolor{gray}{\#生成wheel}`
+    python3 -m venv venv
+    source venv/bin/activate`\\ \textcolor{gray}{\#创建并激活虚拟环境venv}`
+    pip install ./dist/greetlab_24070001148-0.1.0-py3-none-any.whl`\\ \textcolor{gray}{\# 从生成的wheel安装}`
+    cd ..
+    sdt-greet --name 24070001148`\\ \textcolor{gray}{\#切换到q09之外运行程序}`
