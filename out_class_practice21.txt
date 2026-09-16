@@ -1,0 +1,7 @@
+ printenv > before.txt `\\ \textcolor{gray}{\#将激活前的环境变量保存到文件中}`
+    python3 -m venv mytest_venv
+    source mytest_venv/bin/activate
+    printenv > after.txt
+    diff before.txt after.txt `\\ \textcolor{gray}{\#查看激活前后环境变量的变化}`
+    which deactivate `\\ \textcolor{gray}{\#deactivate不是文件，无反应}`
+    type deactivate
