@@ -1,0 +1,33 @@
+name: CI
+on: push   # ✅触发规则：只要执行git push，就自动运行CI
+
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      # ①拉取你的仓库代码
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # ②安装Python环境
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ③安装格式化、lint、测试工具
+      - name: Install dependency
+        run: pip install black flake8 pytest
+
+      # ④代码格式化检查（black）
+      - name: Check format (black)
+        run: black --check .
+
+      # ⑤静态代码检查 Lint（flake8）
+      - name: Run linter flake8
+        run: flake8 .
+
+      # ⑥运行单元测试 pytest
+      - name: Run unit test pytest
+        run: pytest
+
