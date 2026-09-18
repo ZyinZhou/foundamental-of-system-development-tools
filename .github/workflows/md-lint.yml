@@ -1,0 +1,21 @@
+name: Markdown Lint with write-good
+on: [push, pull_request]
+
+jobs:
+  write-good:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install write-good
+        run: npm install -g write-good
+
+      - name: Run write-good on all md files
+        run: write-good *.md
+
